@@ -9,3 +9,9 @@
       left: 15%;
       z-index: 10;
 }
+.box-shad{
+    box-shadow: 0px 1px 3px 1px rgba(50, 50, 50, 0.1);
+}
+.q-v{
+    background-color: rgb(239, 235, 235);
+}
