@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise IV</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  </head>
+  <body>
+    <h1></h1>
+    <script>
+      // Exercise IV:
+      // Make a JavaScript program to calculate the hours, minutes and seconds based on an entered number (seconds) in prompt. (i.e. 3663)
+      // In the starter files in HTML for this exercise, you will notice a blank <h1> inside the body already sitting there. (do not delete this one, you will need it.)
+      // Get and save the number coming from prompt (the seconds)
+      // Make a calculation and get the appropriate time for the hours, minutes and seconds.
+      // Select the <h1> element from the body.
+      // Add a text with JavaScript to the <h1> element saying: “The time is hours:minutes:seconds” based on the calculation from above (i.e “The time is 1h:1min:3sec.”).
+      // Underline the text of the <h1> and center it horizontally with JavaScript.
+      // (text-decoration: underline; text-align: center;)
+      // Do not use CSS for the styling.
+
+      const time = +window.prompt("Enter time.");
+
+      if (isNaN(time)) {
+        window.alert("Please enter only a number.");
+      } else {
+        const seconds = Math.floor(time % 60);
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+
+        const header = document.querySelector("h1");
+        header.innerText = `The time is ${hours}h:${minutes}min:${seconds}sec`;
+        header.style.textDecoration = "underline";
+        header.style.textAlign = "center";
+      }
+    </script>
+  </body>
+</html>

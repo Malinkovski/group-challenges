@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise I</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+      // Exercise I:
+      // Make a JavaScript program that will check whether the time is AM or PM (US time). Now, do not enter the full time, but only the hours as a number. (i.e. 10)
+      // You will have to get and save the hours from prompt (hint: prompt(‘enter hours’).)
+      // If it’s AM, show in console “It’s {time}AM”. (i.e “It’s 10AM”) , and accordingly for the PM too.
+      // Make sure you check the exception when the user enters an hour bigger than 24, or a simple text. If that happens, just show in the console “You’ve entered a wrong number for hour”.
+      // Additionally: there’s an img folder sent along the starter files, which has 2 images.
+      // Make another check and see if the same hours from above are daytime or nighttime.
+      // Daytime is the following hours (6h - 17h)
+      // Nighttime is the following hours (18h - 6h)
+      // If the hours are in the daytime period, show the sun image in HTML, and if the hours are in the nighttime period, show the moon image in HTML.
+      // You will have to create the image, fill it’s source and append/attach it to the body dynamically in JavaScript. Don’t just add <img> tags in your html and hide/show them with css.
+      let hour = +window.prompt("Enter hours");
+      let AM_PM = "AM";
+      if (isNaN(hour)) {
+        window.alert("Please enter only a numbers for hours.");
+      } else if (hour < 0 || hour > 23) {
+        window.alert("You have entered a wrong number for hours.");
+      } else {
+        const time = hour;
+        if (hour > 11) {
+          AM_PM = "PM";
+          hour -= 12;
+        }
+        if (hour === 0) {
+          hour = 12;
+        }
+        window.alert(`it's ${hour} ${AM_PM}`);
+        Daytime = time >= 6 && time <= 17; // boolean for daytime
+
+        const img = document.createElement("img");
+        img.src = Daytime ? "img/sun.png" : "img/moon.png";
+        document.body.appendChild(img);
+      }
+    </script>
+  </body>
+</html>

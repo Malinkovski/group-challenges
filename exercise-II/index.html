@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise II</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+      // Exercise II:
+      // Make a JavaScript program to check what day of the week it is, based on a given number.
+      // Take the number from prompt(hint: prompt(‘enter number to see what day it is’))
+      // Make sure you convert that number into a real number(hint: parseInt(number))
+      // Now, you can check for each of the numbers from 1 - 7 and for each of them show the appropriate weekday in a new < h1 > element that you will create dynamically with JavaScript. (i.e“ It’ s friday”. - in a < h1 > element in body)
+      // Also, color the text of the < h1 > element in green with JavaScript.
+      // Do not create the < h1 > element directly in HTML and do not use CSS.
+      // Make sure you check the exception if the user enters a different number from 1 - 7 or enter just text.If that happens, fill the < h1 > element with text - “Wrong data” and color it red.
+      // Append / attach the newly created < h1 > element to the body. **
+      // Use If / if else /else statements to achieve the result.
+
+      let day = +window.prompt("enter number to see what day it is");
+
+      if (isNaN(day)) {
+        window.alert("Please enter only numbers in the input area.");
+      } else if (day < 1 || day > 7) {
+        window.alert("Please enter a valid day number of the week (1-7)");
+        const header = document.createElement("h");
+        document.body.appendChild(header);
+        header.innerText = "Wrong data";
+        header.style.backgroundColor = "red";
+      } else {
+        const header = document.createElement("h");
+        document.body.appendChild(header);
+        header.style.backgroundColor = "green";
+        if (day === 1) {
+          header.innerText = "Monday";
+        } else if (day === 2) {
+          header.innerText = "Tuesday";
+        } else if (day === 3) {
+          header.innerText = "Wednesday";
+        } else if (day === 4) {
+          header.innerText = "Thursday";
+        } else if (day === 5) {
+          header.innerText = "Friday";
+        } else if (day === 6) {
+          header.innerText = "Saturday";
+        } else {
+          header.innerText = "Sunday";
+        }
+      }
+    </script>
+  </body>
+</html>

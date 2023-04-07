@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise III</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+      // Exercise III:
+      // Rewrite exercise II using switch statement in JavScript. Make sure everything continues working the same.
+
+      const day = +window.prompt("enter number to see what day it is");
+
+      if (isNaN(day)) {
+        window.alert("Please enter only numbers in the input area.");
+      } else if (day < 1 || day > 7) {
+        window.alert("Please enter a valid day number of the week (1-7)");
+        const header = document.createElement("h");
+        document.body.appendChild(header);
+        header.innerText = "Wrong data";
+        header.style.backgroundColor = "red";
+      } else {
+        const header = document.createElement("h");
+        document.body.appendChild(header);
+        header.style.backgroundColor = "green";
+        switch (day) {
+          case 1:
+            header.innerText = "Monday";
+            break;
+          case 2:
+            header.innerText = "Tuesday";
+            break;
+          case 3:
+            header.innerText = "Wednesday";
+            break;
+          case 4:
+            header.innerText = "Thursday";
+            break;
+          case 5:
+            header.innerText = "Friday";
+            break;
+          case 6:
+            header.innerText = "Saturday";
+            break;
+          case 7:
+            header.innerText = "Sunday";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
