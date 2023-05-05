@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified Bootstrap 4.4.1 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-6 offset-3 text-center">
+          <h1>Your Activities for today</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 offset-3 table-container"></div>
+      </div>
+    </div>
+
+    <script>
+      let activities = [
+        ["Work", 8],
+        ["Eat", 3],
+        ["Commute", 2],
+        ["Play Game", 1],
+        ["Workout", 2],
+        ["Sleep", 8],
+      ];
+
+      //Exercise II
+      /*       function percentageTimeOfDay() {
+        const bodyRows = tbody.querySelectorAll("tr");
+        bodyRows.forEach((row, index) => {
+          const trElements = row.querySelectorAll("td");
+          const percentageTd = document.createElement("td");
+          const hours = +trElements[2].innerText;
+          const percentageOfDay = Math.floor((hours / 24) * 100);
+          percentageTd.innerText = `${percentageOfDay}%`;
+          row.appendChild(percentageTd);
+        });
+      } */
+
+      //Exercise IV
+      const createRow = (col1, col2, col3, col4, whatTypeOfCell /*col4*/) => {
+        const row = document.createElement("tr");
+        const coll1 = document.createElement(whatTypeOfCell);
+        coll1.textContent = col1;
+        row.appendChild(coll1);
+
+        const coll2 = document.createElement(whatTypeOfCell);
+        coll2.textContent = col2;
+        row.appendChild(coll2);
+
+        const coll3 = document.createElement(whatTypeOfCell);
+        coll3.textContent = col3;
+        row.appendChild(coll3);
+       
+        const coll4 = document.createElement(whatTypeOfCell);
+        coll4.textContent = col4;
+        row.appendChild(coll4);
+        // const table1 = document.querySelector("table");
+
+        //Exercise II.1
+        // const percentageTd = document.createElement("td");
+        // const hours = +col3;
+        // const percentageOfDay = Math.floor((hours / 24) * 100);
+        // percentageTd.innerText = `${percentageOfDay}%`;
+        // row.appendChild(percentageTd);
+
+        return row;
+      };
+
+      //Exercise V
+      const populateBody = () => {
+        activities.forEach((item, index) => {
+          const [activity, hours] = item;
+          const percentage = (item[1] / 24 * 100).toFixed(2);
+          if(!item[2]) {
+            item.push(percentage);
+          }
+          const row = createRow(index, activity, hours, percentage, 'td');
+          tbody.appendChild(row);
+        });
+      };
+
+      //Exercise I
+
+      const tableContainer = document.querySelector(".table-container");
+      const table = document.createElement("table");
+      table.classList.add("table", "table-bordered", "table-dark", 'table-striped');
+      tableContainer.appendChild(table);
+
+      const thead = document.createElement("thead");
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+
+      const row = createRow('Index', 'Activity', 'Hours', '% of the day', 'th')
+      thead.appendChild(row);
+
+      thead.appendChild(row);
+      console.log(activities)
+
+      populateBody();
+      
+      console.log(activities)
+      // Exercise II
+      //percentageTimeOfDay(); 
+      
+      //Exercise III
+      activities.splice(2, 1);
+      tbody.innerHTML = "";
+
+      //Exercise IV
+      /*    
+      const row1 = createRow("Index", "Activity", "Hours", "% of the day");
+      table.appendChild(row1);
+
+      const row2 = createRow("1", "Work", "8", "33%");
+      table.appendChild(row2);
+
+      const row3 = createRow("2", "Eat", "3", "12%");
+      table.appendChild(row3);
+
+      const row4 = createRow("2", "Eat", "3", "12%");
+      table.appendChild(row4); 
+      */
+      //createRow(); // Exercise IV
+      /* percentageTimeOfDay(); */
+
+      // Exercise V
+      populateBody(); 
+
+      //// LAST! - painting every even row - lighter gray ////
+      // tbody.querySelectorAll("tr").forEach((row, index) => {
+      //   if (index % 2 === 0) {
+      //     row.style.backgroundColor = "#40474e";
+      //   }
+      // });
+    </script>
+  </body>
+</html>
