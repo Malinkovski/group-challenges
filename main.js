@@ -31,24 +31,22 @@ let tags = [
 ];
 
 const widgetBar = document.querySelector(".widget-sidebar-tags");
-const ul = document.createElement("ul");
-ul.style.display = "flex";
-ul.style.listStyleType = "none";
-ul.style.flexWrap = "wrap";
-ul.style.paddingLeft = "0";
-
+// const ul = document.createElement("ul");
+// ul.style.display = "flex";
+// ul.style.listStyleType = "none";
+// ul.style.flexWrap = "wrap";
+// ul.style.paddingLeft = "0";
 
 for (let i = 0; i < tags.length; i++) {
-  const li = document.createElement("li");
-  li.innerHTML = `<a href="#" 
+  // const li = document.createElement("li");
+  widgetBar.innerHTML += `<a href="#" 
                      class="btn btn-outline-secondary
                      btn-sm mr-2 mb-2">${tags[i]}</a>
                      `;
-  li.setAttribute(`tag`, `${tags[i]}`);
-  ul.appendChild(li);
+  // ul.appendChild(li);
 }
 
-widgetBar.appendChild(ul);
+// widgetBar.appendChild(ul);
 
 // exercise III
 // In the first sidebar widget (that's already done) there are bunch of links
@@ -64,12 +62,11 @@ const postsContent = document.querySelector(".posts-cont");
 let posts = document.querySelectorAll(".link-block");
 mainWidget.style.display = "block";
 
-for(let i = 0; i < posts.length; i++){
-  if(i % 2 === 0){
-    postsContent.innerHTML += posts[i].innerHTML;
-  }
+for (let i = 0; i < posts.length; i += 2) {
+  // if (i % 2 === 0) {
+  postsContent.innerHTML += posts[i].innerHTML;
+  // }
 }
-
 
 // exercise IV
 // You are given an array of images. In html there is a carousel
@@ -88,20 +85,25 @@ let imgsArr = [
 ];
 
 const carousel = document.querySelector(".carousel");
-const carouselInner =document.querySelector(".carousel-inner");
-carousel.style.display ="block";
+const carouselInner = document.querySelector(".carousel-inner");
+carousel.style.display = "block";
 
-for(let i = 0; i < imgsArr.length; i++){
-  carouselInner.innerHTML += `<div class="carousel-item">
-                              <img class="d-block w-100" alt="First slide">
-                              </div>`;
-const carouselItem = document.querySelectorAll(".carousel-item");                              
-carouselItem[i].querySelector("img").src = imgsArr[i];
-if(i === 0){
-  carouselItem[0].classList.add('active');
+for (let i = 0; i < imgsArr.length; i++) {
+  if (i === 0) {
+    carouselInner.innerHTML += `<div class="carousel-item active">
+    <img class="d-block w-100" src=${imgsArr[i]} alt="First slide">
+    </div>`;
+  } else {
+    carouselInner.innerHTML += `<div class="carousel-item">
+    <img class="d-block w-100" src=${imgsArr[i]} alt="First slide">
+    </div>`;
+  }
+  // carouselInner.innerHTML += `<div class="carousel-item ${
+  //   i === 0 ? "active" : ""
+  // }">
+  //    <img class="d-block w-100" src=${imgsArr[i]} alt="First slide">
+  // </div>`;
 }
-}
-
 
 // Example of one carousel item (slide)
 {
