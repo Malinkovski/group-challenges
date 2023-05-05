@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified Bootstrap 4.4.1 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-6 offset-3 text-center">
+          <h1>Your Activities for today</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 offset-3 table-container"></div>
+      </div>
+    </div>
+
+    <script>
+      let activities = [
+        ["Work", 8],
+        ["Eat", 3],
+        ["Commute", 2],
+        ["Play Game", 1],
+        ["Workout", 2],
+        ["Sleep", 8],
+      ];
+
+      //Exercise I
+
+      const tableContainer = document.querySelector(".table-container");
+      const table = document.createElement("table");
+      table.classList.add("table", "table-bordered", "table-dark");
+      tableContainer.appendChild(table);
+
+      const thead = document.createElement("thead");
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+
+      const row = document.createElement("tr");
+      thead.appendChild(row);
+
+      let headers = ["Index", "Activity", "Hours"];
+      headers.push("% of the day"); //Exercise II
+      headers.forEach((items) => {
+        const td = document.createElement("td");
+        td.innerText = items;
+        row.appendChild(td);
+      });
+      thead.appendChild(row);
+
+      activities.forEach((item, index) => {
+        const [activity, hours] = item;
+        const row = document.createElement("tr");
+        let indexRow = document.createElement("td");
+        indexRow.innerText = index;
+
+        row.appendChild(indexRow);
+
+        item.forEach((itemData) => {
+          const td = document.createElement("td");
+          td.innerText = itemData;
+          row.appendChild(td);
+        });
+
+        /*      
+        const activityData = document.createElement("td");
+        activityData.innerText = activity;
+        row.appendChild(activityData);
+
+        const hoursData = document.createElement("td");
+        hoursData.innerText = hours;
+        row.appendChild(hoursData); 
+        */
+
+        tbody.appendChild(row);
+      });
+
+      //Exercise II
+      const bodyRows = tbody.querySelectorAll("tr");
+      bodyRows.forEach((row, index) => {
+        const tr = row.querySelectorAll("td");
+        const percentageTd = document.createElement("td");
+        const hours = +tr[2].innerText;
+        const percentageOfDay = Math.floor((hours / 24) * 100);
+        percentageTd.innerText = `${percentageOfDay}%`;
+        row.appendChild(percentageTd);
+      });
+
+      //Exercise III
+
+      //Exercise IV
+
+      //Exercise V
+
+      //// LAST! - painting every even row lighter gray ////
+      bodyRows.forEach((bodyRow, index) => {
+        if (index % 2 === 0) {
+          bodyRow.style.backgroundColor = "#40474e";
+        }
+        tbody.appendChild(bodyRow);
+      });
+    </script>
+  </body>
+</html>
