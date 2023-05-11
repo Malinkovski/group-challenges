@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-        crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
     />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="row">
-          <div class="col-6 offset-3 table-container"></div>
-        </div>
+      <div class="row">
+        <div class="col-6 offset-3 table-container"></div>
       </div>
+    </div>
 
-      <script>
-        //Exercise I
-        const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-        //Exercise II
-        const operators = ['+', '-', '*', '/'];
-        const randomOperator = () => operators[randomNumber(0,3)];
-        //Exercise III
+    <script>
+      //Exercise I
+      const randomNumber = (min, max) =>
+        Math.floor(Math.random() * (max - min + 1) + min);
+      //Exercise II
 
-        //Exercise IV
+      //Exercise III
 
-        //Exercise V
+      //Exercise IV
 
-      </script>
-</body>
+      const createRow = (index, num1, operator, num2) => {
+        const result = calculate(num1, operator, num2).toFixed(2);
+
+        const row = document.createElement("tr");
+
+        const values = [index, num1, operator, num2, "=", result];
+
+        values.forEach((value) => {
+          const td = document.createElement("td");
+          td.textContent = value;
+          row.appendChild(td);
+        });
+
+        return row;
+      };
+      //Exercise V
+
+
+    </script>
+  </body>
 </html>
