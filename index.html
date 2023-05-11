@@ -24,7 +24,11 @@
       const randomNumber = (min, max) =>
         Math.floor(Math.random() * (max - min + 1) + min);
       //Exercise II
-
+      function randomOperator() {
+        const operators = ["+", "-", "*", "/"];
+        const randomIndex = randomNumber(0, 3);
+        return operators[randomIndex];
+      }
       //Exercise III
 
       //Exercise IV
@@ -45,8 +49,6 @@
         return row;
       };
       //Exercise V
-
-
     </script>
   </body>
 </html>
