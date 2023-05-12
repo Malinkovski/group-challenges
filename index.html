@@ -30,7 +30,18 @@
         return operators[randomIndex];
       }
       //Exercise III
-
+      const calculate = (num1, operator, num2) => {
+        switch (operator) {
+          case "+":
+            return num1 + num2;
+          case "-":
+            return num1 - num2;
+          case "*":
+            return num1 * num2;
+          case "/":
+            return num1 / num2;
+        }
+      };
       //Exercise IV
 
       const createRow = (index, num1, operator, num2) => {
@@ -49,6 +60,25 @@
         return row;
       };
       //Exercise V
+            const createTable = (num1, num2) => {
+        const tableContainer = document.querySelector(".table-container");
+        const table = document.createElement("table");
+        table.classList.add( "table", "table-sm", "table-bordered", "text-center");
+        tableContainer.appendChild(table);
+        for (let i = 0; i < randomNumber(1,50); i++) {
+          table.appendChild(
+            createRow( 
+              i + 1 + ".", 
+              randomNumber(num1, num2), 
+              randomOperator(), 
+              randomNumber(num1, num2)
+              )
+          );
+        }
+      };
+
+      createTable(1, 100);
+
     </script>
   </body>
 </html>
