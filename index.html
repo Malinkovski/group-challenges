@@ -20,15 +20,22 @@
     </div>
 
     <script>
+      // se odlucivme vaka da go imenumvae 
+      const LS_KLUC_KEY = 'klucevi';
+
+      const NUMBER_OF_DECIMALS = 3;
+      const OPERATORS = ["+", "-", "*", "/"];
+
       //Exercise I
       const randomNumber = (min, max) =>
         Math.floor(Math.random() * (max - min + 1) + min);
+
       //Exercise II
       function randomOperator() {
-        const operators = ["+", "-", "*", "/"];
-        const randomIndex = randomNumber(0, 3);
-        return operators[randomIndex];
+        const randomIndex = randomNumber(0, OPERATORS.length - 1);
+        return OPERATORS[randomIndex];
       }
+
       //Exercise III
       const calculate = (num1, operator, num2) => {
         switch (operator) {
@@ -40,13 +47,14 @@
             return num1 * num2;
           case "/":
             return num1 / num2;
+          default: 
+            return;
         }
       };
+
       //Exercise IV
-
       const createRow = (index, num1, operator, num2) => {
-        const result = calculate(num1, operator, num2).toFixed(2);
-
+        const result = calculate(num1, operator, num2).toFixed(NUMBER_OF_DECIMALS);
         const row = document.createElement("tr");
 
         const values = [index, num1, operator, num2, "=", result];
@@ -59,12 +67,14 @@
 
         return row;
       };
+
       //Exercise V
-            const createTable = (num1, num2) => {
+      const createTable = (num1, num2) => {
         const tableContainer = document.querySelector(".table-container");
         const table = document.createElement("table");
-        table.classList.add( "table", "table-sm", "table-bordered", "text-center");
+        table.classList.add( "table", "table-sm", "table-dark", "table-bordered", "text-center");
         tableContainer.appendChild(table);
+
         for (let i = 0; i < randomNumber(1,50); i++) {
           table.appendChild(
             createRow( 
