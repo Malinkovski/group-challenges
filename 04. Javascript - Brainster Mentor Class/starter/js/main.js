@@ -56,3 +56,14 @@ animalData.forEach((animal) => {
   boxesWrapper.appendChild(animalBox);
 });
 
+
+function removeContainer () {
+  const boxesAnimal = document.getElementById ('boxes-wrapper');
+  boxesAnimal.innerHTML = '';
+  
+  animalData = [];
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const removeAll = document.getElementById('remove-all');
+  removeAll.addEventListener('click', removeContainer);
+});
