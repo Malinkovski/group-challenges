@@ -11,6 +11,19 @@ let animalData = [
   ["Cat, toddy", "./img/cat.jpg", "7"],
   ["Hippopotamus", "./img/hippo.jpg", "5"],
 ];
+
+const boxesWrapperClear = () => {
+  const boxesWrapper = document.querySelector('.boxes-wrapper');
+  boxesWrapper.innerHTML = '';
+}
+const newAnimalBoxes = () =>{
+  animalData.forEach((animal) => {
+    const animalBox = createBox(animal);
+    boxesWrapper.appendChild(animalBox);
+  });
+};
+
+
 // Function to create an animal box
 function createBox(animal) {
   // Create outer div
@@ -51,19 +64,41 @@ function createBox(animal) {
 const boxesWrapper = document.querySelector('.boxes-wrapper');
 
 // Iterate through the animal data and create animal boxes
-animalData.forEach((animal) => {
-  const animalBox = createBox(animal);
-  boxesWrapper.appendChild(animalBox);
-});
+newAnimalBoxes();
 
 
 function removeContainer () {
-  const boxesAnimal = document.getElementById ('boxes-wrapper');
-  boxesAnimal.innerHTML = '';
-  
+  boxesWrapperClear();
   animalData = [];
 }
 document.addEventListener('DOMContentLoaded', function() {
   const removeAll = document.getElementById('remove-all');
   removeAll.addEventListener('click', removeContainer);
 });
+
+//Exercise III
+
+const addAnimal = document.getElementById('add-animal');
+
+addAnimal.addEventListener('click', () => {
+  const animalName = document.getElementById('animal-name').value;
+  const animalImg = document.getElementById('animal-img').value;
+  const animalAge = document.getElementById('animal-age').value;
+  
+  if (animalName && animalImg && animalAge) {
+    const newAnimal = [animalName, animalImg, animalAge];
+    animalData.push(newAnimal);
+    
+    boxesWrapperClear();
+    newAnimalBoxes();
+    
+    document.getElementById('animal-name').value = '';
+    document.getElementById('animal-img').value = '';
+    document.getElementById('animal-age').value = ''; 
+  }
+});
+
+//Exercise IV
+
+
+
