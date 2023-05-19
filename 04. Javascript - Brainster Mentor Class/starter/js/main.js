@@ -12,46 +12,48 @@ let animalData = [
   ["Hippopotamus", "./img/hippo.jpg", "5"],
 ];
 
-const boxesWrapperClear = () => {
-  const boxesWrapper = document.querySelector('.boxes-wrapper');
-  boxesWrapper.innerHTML = '';
-}
-const newAnimalBoxes = () =>{
-  animalData.forEach((animal) => {
+const boxesWrapper = document.querySelector(".boxes-wrapper");
+
+const clearBoxesWrapper = () => {
+  boxesWrapper.innerHTML = "";
+};
+
+const renderAnimalBoxes = (data) => {
+  data.forEach((animal) => {
     const animalBox = createBox(animal);
     boxesWrapper.appendChild(animalBox);
   });
 };
 
-
 // Function to create an animal box
 function createBox(animal) {
   // Create outer div
-  const outerDiv = document.createElement('div');
-  outerDiv.className = 'col-6 col-md-3 text-center mb-4';
+  const outerDiv = document.createElement("div");
+  outerDiv.className = "col-6 col-md-3 text-center mb-4";
 
   // Create inner div
-  const innerDiv = document.createElement('div');
-  innerDiv.className = 'border h-100 p-2';
+  const innerDiv = document.createElement("div");
+  innerDiv.className = "border h-100 p-2";
 
   // Create h2 element for animal name
-  const nameHeading = document.createElement('h2');
-  nameHeading.className = 'h4 mt-3';
+  const nameHeading = document.createElement("h2");
+  nameHeading.className = "h4 mt-3";
   nameHeading.textContent = animal[0];
 
   // Create img element for animal image
-  const imageElement = document.createElement('img');
-  imageElement.style.maxWidth = '100%';
+  const imageElement = document.createElement("img");
+  imageElement.style.maxWidth = "100%";
   imageElement.src = animal[1];
 
   // Create p element for animal age
-  const ageParagraph = document.createElement('p');
+  const ageParagraph = document.createElement("p");
   ageParagraph.textContent = `Age: ${animal[2]}`;
 
   // Append elements to the inner div
   innerDiv.appendChild(nameHeading);
   innerDiv.appendChild(imageElement);
   innerDiv.appendChild(ageParagraph);
+  // innerDiv.append(nameHeading, imageElement, ageParagraph);
 
   // Append the inner div to the outer div
   outerDiv.appendChild(innerDiv);
@@ -60,45 +62,57 @@ function createBox(animal) {
   return outerDiv;
 }
 
-// Get the boxes wrapper element
-const boxesWrapper = document.querySelector('.boxes-wrapper');
-
 // Iterate through the animal data and create animal boxes
-newAnimalBoxes();
+renderAnimalBoxes(animalData);
 
-
-function removeContainer () {
-  boxesWrapperClear();
+function removeContainer() {
+  clearBoxesWrapper();
   animalData = [];
 }
-document.addEventListener('DOMContentLoaded', function() {
-  const removeAll = document.getElementById('remove-all');
-  removeAll.addEventListener('click', removeContainer);
-});
+
+const removeAll = document.getElementById("remove-all");
+removeAll.addEventListener("click", removeContainer);
 
 //Exercise III
 
-const addAnimal = document.getElementById('add-animal');
+const addAnimal = document.getElementById("add-animal");
 
-addAnimal.addEventListener('click', () => {
-  const animalName = document.getElementById('animal-name').value;
-  const animalImg = document.getElementById('animal-img').value;
-  const animalAge = document.getElementById('animal-age').value;
-  
-  if (animalName && animalImg && animalAge) {
-    const newAnimal = [animalName, animalImg, animalAge];
+addAnimal.addEventListener("click", () => {
+  const animalName = document.getElementById("animal-name");
+  const animalImg = document.getElementById("animal-img");
+  const animalAge = document.getElementById("animal-age");
+
+  if (animalName.value && animalImg.value && animalAge.value) {
+    const newAnimal = [animalName.value, animalImg.value, animalAge.value];
     animalData.push(newAnimal);
-    
-    boxesWrapperClear();
-    newAnimalBoxes();
-    
-    document.getElementById('animal-name').value = '';
-    document.getElementById('animal-img').value = '';
-    document.getElementById('animal-age').value = ''; 
+
+    clearBoxesWrapper();
+    renderAnimalBoxes(animalData);
+
+    animalName.value = "";
+    animalImg.value = "";
+    animalAge.value = "";
+  } else {
+    alert("Please enter all data");
   }
 });
 
 //Exercise IV
+const filterButtons = document.querySelectorAll(".filters button");
 
+filterButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const filter = event.target.getAttribute("data-age");
 
+    clearBoxesWrapper();
 
+    if (filter === "all") {
+      renderAnimalBoxes(animalData);
+    } else {
+      const filteredAnimals = animalData.filter(
+        (animal) => animal[2] === filter
+      );
+      renderAnimalBoxes(filteredAnimals);
+    }
+  });
+});
