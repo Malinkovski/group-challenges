@@ -92,7 +92,7 @@ function addToGuestList(name, age) {
 
 //Accept button
 $("#queList").on("click", ".btn-outline-success", function () {
-  const row = $(this).parents("tr");
+  const row = $(this).closest("tr");
   const name = row.find("td:first-child").text();
   const age = +row.find("td:nth-child(2)").text();
   addToGuestList(name, age);
@@ -108,7 +108,7 @@ $("#queList").on("click", ".btn-outline-danger", function () {
 
 //Edit/Save button
 
-function getName() {}
+function editName() {}
 
 $("#guestList").on("click", ".btn-outline-info", function () {
   const row = $(this).closest("tr");
@@ -119,7 +119,7 @@ $("#guestList").on("click", ".btn-outline-info", function () {
     const nameInputForm = $("<input>")
       .addClass("form-control-sm form-control")
       .val(originalNameValue);
-
+          
     nameCell.text("").append(nameInputForm);
     $(this).text("Save");
   } else {
