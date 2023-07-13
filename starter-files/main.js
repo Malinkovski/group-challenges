@@ -2,23 +2,19 @@ $(function () {
   const bannerTitle = $(".banner h1");
 
   const CARDS_PER_RENDER = 9;
+  const BASE_URL = 'https://jsonplaceholder.typicode.com/photos';
   let bannerIndex = 0;
 
+  const container = $('#container');
   //_____________________________________________________________________________
   //functions
-  function CreateCards(data) {
-    let counter = 0;
-    let row;
-    const container = document.getElementById('container');
+  function createCards(data) {
+    let row = $("<div>").addClass('row');
+    container.append(row);
 
     data.forEach(item => {
-      if (counter < CARDS_PER_RENDER) {
-        if (counter % 3 === 0) {
-          row = document.createElement("div");
-          row.classList.add("row","text-center");
-        }
-      const card = document.createElement('div');
-      card.classList.add('col-12', 'col-md-4');
+
+      const card = $("<div>").addClass('col-12 col-md-4 card');
 
       const cardImage = document.createElement("img");
       cardImage.classList.add("card-image");
@@ -28,13 +24,12 @@ $(function () {
       const cardBody = document.createElement('div');
       cardBody.classList.add('card-body');
 
-      card.appendChild(cardImage);
-      card.appendChild(cardBody);
-      row.appendChild(card);
-      container.appendChild(row);
+      card.append(cardImage, cardBody);
+      row.append(card);
+      
 
       // Show card title on click
-      card.addEventListener('click', function () {
+      card.on('click', function () {
         if (cardBody.innerHTML.trim() === '') {
           const cardTitle = document.createElement('div');
           const innerTitle = document.createElement('h1');
@@ -46,47 +41,38 @@ $(function () {
           cardBody.innerHTML = '';
         }
       });
-    }
-    counter++;
-  }); 
+    });
   }
-  function fetchCards() {
-    fetch(`https://jsonplaceholder.typicode.com/photos`)
+
+  function fetchCards(start = 0) {
+    fetch(`${BASE_URL}?_start=${start}&_limit=${CARDS_PER_RENDER}`)
       .then((res) => res.json())
       .then((data) => {
-        CreateCards(data);
+        createCards(data);
       })
       .catch((error) => {
         console.log("Error fetching data from url:", error);
       });
   }
+
   // __________________________________________________________________________
   //banner logic
-  let arr = ["CREATIVE", "ARTISTIC", "BEAUTIFUL"];
+  const arr = ["CREATIVE", "ARTISTIC", "BEAUTIFUL"];
 
-  bannerTitle.text(arr[bannerIndex++]);
+  bannerTitle.text(arr[bannerIndex]);
 
   setInterval(function () {
+    bannerIndex++
     bannerTitle.fadeOut(500, function () {
-      bannerTitle.text(arr[bannerIndex++]).fadeIn(500);
-    });
+      bannerTitle.text(arr[bannerIndex % arr.length]).fadeIn(500);
 
-    if (bannerIndex === arr.length) {
-      bannerIndex = 0;
-    }
+    });
   }, 2000);
 
   // __________________________________________________________________________
   //fetch the first 9 cards
 
-  fetch("https://jsonplaceholder.typicode.com/photos")
-    .then((res) => res.json())
-    .then((data) => {
-      CreateCards(data);
-    })
-    .catch((error) => {
-      console.log("Error fetching data from url:", error);
-    });
+  fetchCards()
 
   // __________________________________________________________________________
   //scroll to top on click
@@ -97,10 +83,16 @@ $(function () {
   // __________________________________________________________________________
   // Infinite scroll to update the cards
 
-  window.addEventListener('scroll', function () {
+  $(window).on('scroll', function () {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    console.log('-----------')
+    console.log('scrollTop: ', scrollTop)
+    console.log('clientHeight: ', clientHeight)
+    console.log('scrollHeight: ', scrollHeight)
+    console.log('-----------')
     if (scrollTop + clientHeight >= scrollHeight) {
-      fetchCards();
+      fetchCards($('.card').length);
     }
   });
 });
+
