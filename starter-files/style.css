@@ -29,8 +29,27 @@ img {
   height: 40vh;
   position: relative;
   background-image: url('./banner-bg-image.jpg');
-  background-size: cover;
-  background-position: center;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+@media (max-width: 1200px) {
+  /* Mobile Styles */
+  .banner {
+    background-size: 150%;
+  }
+}
+@media (max-width: 767px) {
+  /* Mobile Styles */
+  .banner {
+    background-size: cover;
+    background-position-y: -100px;
+  }
+}
+
+.darken {
+  background-color: (0, 0, 0, 0.5);
 }
 
 .banner::before {
@@ -66,8 +85,6 @@ img {
 
 .projects .row .col-md-4 {
   margin-bottom: 30px;
-  height: 33%;
-  width: 33%;
 }
 
 .col-md-4 {
@@ -75,22 +92,31 @@ img {
   
   
 }
-
-.card-body {
-  padding: 20px;
+.card-image{
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .card-title {
-  text-transform: uppercase;
-  font-size: 20px;
+  padding: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: white;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+.card-title h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 /* scroll up button */
@@ -100,7 +126,6 @@ img {
   right: 20px;
   width: 50px;
   height: 50px;
-  border-radius: 21%;
   text-align: center;
   line-height: 50px;
   cursor: pointer;
@@ -109,11 +134,3 @@ img {
   font-size: 20px;
 }
 
-  /*           <!--<div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h1>600x600</h1>
-              </div>
-            </div>
-          </div>
-           --> */
