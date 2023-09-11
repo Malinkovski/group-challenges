@@ -1,0 +1,49 @@
+/* CSS RESETS */
+body {
+    margin: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  /* CSS RESETS */
+
+header{
+    height: 70px;
+}
+
+section{
+    padding-top: 50px;
+    text-align: center;
+    display: flex;
+}
+
+.form-control{
+    width: 300px !important;
+}
+
+ul{
+    margin-top: 20px !important;
+    list-style: none;
+    text-align: center;
+}
+
+li{
+    margin-top: 20px;
+}
