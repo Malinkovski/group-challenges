@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "./Button"; // Rename the custom button component
+import Button from "./Button";
 
 interface LoginFormProps {
   isLoggedIn: (username: string) => void;
