@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 
 interface UserProps {
   id: number;
@@ -44,9 +44,9 @@ const Users = () => {
         onChange={handleSearch}
       />
       <ul>
-        {filteredUsers.map((user) => (
-          <li key={user.id}>
-            {user.name} - <a href={`mailto:${user.email}`}>Email me</a>
+        {filteredUsers.map(({ id, name, email }) => (
+          <li key={id}>
+            {name} - <a href={`mailto:${email}`}>Email me</a>
           </li>
         ))}
       </ul>
