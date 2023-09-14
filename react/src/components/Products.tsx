@@ -16,24 +16,23 @@ function Products() {
           </tr>
         </thead>
         <tbody>
-        {products.map(({ id, name, description, unit, ingredients }, index) => (
-  <tr key={id}>
-    <td>{id}</td>
-    <td>{name}</td>
-    <td>{description}</td>
-    <td>{unit}</td>
-    <td>
-      <ul>
-        {ingredients.map(({ name, amount, unit }, index) => (
-          <li key={index}>
-            {name}: {amount} {unit}
-          </li>
-        ))}
-      </ul>
-    </td>
-  </tr>
-))}
-
+          {products.map(({ id, name, description, unit, ingredients }) => (
+            <tr key={id}>
+              <td>{id}</td>
+              <td>{name}</td>
+              <td>{description}</td>
+              <td>{unit}</td>
+              <td>
+                <ul>
+                  {ingredients.map(({ name, amount, unit }) => (
+                    <li key={name}>
+                      {name}: {amount} {unit}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
