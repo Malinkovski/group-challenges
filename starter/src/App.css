@@ -1,0 +1,119 @@
+/* CSS RESETS */
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+/* CSS RESETS */
+
+/* NAVBAR =========== */
+
+nav {
+  background-color: #f78f1e;
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 40%);
+  margin-bottom: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  font-size: 30px;
+  justify-content: space-between;
+  padding: 8px 0px;
+  margin: 0 0 15px 0;
+}
+
+nav ul li a {
+  color: white;
+  transition: ease-in 0.2s;
+}
+nav ul li a:hover {
+  text-decoration: none;
+  color: #ffd6a9;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 50px;
+}
+
+/* PRODUCT LIST ===========*/
+
+.product-list {
+  border-left: solid 1px #dcdcdc90;
+  border-right: solid 1px #dcdcdc90;
+}
+
+/* PRODUCT ============== */
+
+.product {
+  border: 2px solid #f78f1e;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  box-shadow: 2px 3px 8px rgb(0 0 0 / 40%);
+  transition: ease-in-out 0.1s;
+  cursor: pointer;
+  padding: 10px;
+}
+.product img {
+  height: 200px;
+}
+
+.product-selected {
+  transform: scale(105%);
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.589);
+  border-color: rgb(181, 253, 118);
+  background-color: #ffe6cc44;
+}
+
+/* BASKET =========== */
+
+.basket,
+.basket h2 {
+  margin-bottom: 30px;
+}
+
+.list-group {
+  list-style: none;
+}
+.list-group h5 {
+  margin: 15px;
+}
+
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basket button {
+  margin-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+.buttons button {
+  width: 30px;
+  height: 30px;
+}
