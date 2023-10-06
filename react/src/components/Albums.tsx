@@ -9,14 +9,15 @@ interface CommentProps {
 }
 
 const Albums = ({ url }: UrlProps) => {
-  const { loading, data, error } = useFetch<CommentProps[]>(url);
+  const { loading, data, error } = useFetch<CommentProps[]>(url, []);
 
   return (
     <div className="content">
       <Loading loading={loading} error={error} />
       <ul>
-        {data &&
-          data.map((comment) => <li key={comment.id}>{comment.title}</li>)}
+        {data.map((comment) => (
+          <li key={comment.id}>{comment.title}</li>
+        ))}
       </ul>
     </div>
   );

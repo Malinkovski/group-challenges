@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 interface useFetchProps<T> {
   loading: boolean;
   error?: string | null;
-  data: T | null;
+  data: T;
 }
 
-const useFetch = <T,>(url: string): useFetchProps<T> => {
+const useFetch = <T,>(url: string, initialState: T): useFetchProps<T> => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<T | null>(null);
+  const [data, setData] = useState<T>(initialState);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,14 +21,14 @@ const useFetch = <T,>(url: string): useFetchProps<T> => {
       })
       .then((data: T) => {
         setData(data);
-        setError(null);
-        setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [url]);
 
   return { data, loading, error };
 };

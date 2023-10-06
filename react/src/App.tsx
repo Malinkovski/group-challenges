@@ -5,11 +5,10 @@ import Albums from "./components/Albums";
 import Comments from "./components/Comments";
 import "./App.css";
 
-const App = () => {
-  type LOCAL = "albums" | "posts" | "comments";
+type LOCAL = "albums" | "posts" | "comments";
 
+const App = () => {
   const [showComponent, setShowComponent] = useState<LOCAL>("comments");
-  console.log(showComponent);
 
   return (
     <div className="App">
@@ -32,7 +31,7 @@ const App = () => {
       </div>
 
       {showComponent === "albums" && <Albums url={showComponent} />}
-      {showComponent === "posts" && <Posts url={"a"} />}
+      {showComponent === "posts" && <Posts url={showComponent} />}
       {showComponent === "comments" && <Comments url={showComponent} />}
     </div>
   );
