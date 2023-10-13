@@ -17,7 +17,7 @@ const GalleryCreate = ({ onPostSubmit }: GalleryCreateProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageLink, setImageLink] = useState("");
-  const [selectedUser, setSelectedUser] = useState<number>(-1);
+  const [selectedUser, setSelectedUser] = useState<number>(0);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -27,11 +27,10 @@ const GalleryCreate = ({ onPostSubmit }: GalleryCreateProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (title && description && imageLink && selectedUser !== -1) {
+    if (title && description && imageLink && selectedUser !== 0) {
 
       const selectedUserObject = users.find(user => user.id === selectedUser);
       const selectedUserName = selectedUserObject ? selectedUserObject.name : "";
-        console.log(selectedUserName)
       const newPost: Post = {
         title,
         description,
@@ -44,9 +43,9 @@ const GalleryCreate = ({ onPostSubmit }: GalleryCreateProps) => {
       setTitle("");
       setDescription("");
       setImageLink("");
-      setSelectedUser(-1);
+      setSelectedUser(0);
     } else {
-      alert("All fields must be populated to add a new post");
+      alert("All fields must be populated to add a new post.");
     }
   };
 

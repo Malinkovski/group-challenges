@@ -17,7 +17,6 @@ interface ThemeProviderProps {
 const ThemeContextConstructor = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "light");
 
-  
   useEffect(() => {
     document.body.className = theme + "-theme";
     localStorage.setItem("theme", theme);

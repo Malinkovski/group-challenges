@@ -22,6 +22,7 @@ const GalleryList = ({ posts }: GalleryListProps) => {
           imageLink={`https://picsum.photos/id/${index + 50}/300/400`}
         />
       ))}
+      
       {posts.map((post, index) => (
         <PostCard
           key={index}

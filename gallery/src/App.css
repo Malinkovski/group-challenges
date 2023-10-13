@@ -56,7 +56,12 @@ a{
 
 a:hover{
   color: gray;
-  
+  transition: 0.2s ease-in-out;
+}
+.active{
+  color: gray;
+  border-bottom: 3px rgb(0, 131, 131) solid;
+  transition: 0.2s ease-in-out;
 }
 
 h2{
@@ -84,8 +89,12 @@ h2{
   display: flex;
   justify-content: center;
 }
+img{
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
 .inner-card{
-  /* border: 1px gray solid; */
+  border-radius: 5px;
   width: 80%;
   padding: 20px;
   margin-bottom: 50px;
@@ -94,7 +103,7 @@ h2{
   box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
 }
 
-.inner-card > p:not(:last-child) {
+.inner-card > p:not(:last-child){
   padding-bottom: 10px;
 }
 
@@ -102,11 +111,20 @@ span{
   padding-bottom: 10px;
 }
 
-input, option{
+.gallery-container > input, option{
   text-align: center;
+}
+form > button{
+  border-radius: 6px;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
 }
 
 form{
+  font-size: 16px;
   margin-top: 50px;
   width: 60%;
   margin-right: auto;
