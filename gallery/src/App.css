@@ -59,6 +59,11 @@ a:hover{
   
 }
 
+h2{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 
 .light-theme {
   background-color: white;
@@ -95,4 +100,23 @@ a:hover{
 
 span{
   padding-bottom: 10px;
+}
+
+input, option{
+  text-align: center;
+}
+
+form{
+  margin-top: 50px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+form > div{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10px;
+  text-align: center;
 }

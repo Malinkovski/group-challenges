@@ -1,27 +1,24 @@
 import React from "react";
+import { Post } from "./types";
 
-interface PostCardProps {
-  name: string;
-  description: string;
-  timeAgo: string;
-  imageLink: string;
-}
-
-const PostCard: React.FC<PostCardProps> = ({
-  name,
+const PostCard = ({
+  title,
   description,
-  timeAgo,
+  createdAt,
   imageLink,
-}) => {
+  user,
+}: Post) => {
+
   return (
     <div className="card">
       <div className="inner-card">
-        <p>by: {name}</p>
+        <h2>{title}</h2>
+        <p>by: {user}</p>
         <div className="image">
           <img src={imageLink} alt="img" />
         </div>
         <p>{description}</p>
-        <p>{timeAgo}</p>
+        <p>{createdAt}</p>
       </div>
     </div>
   );

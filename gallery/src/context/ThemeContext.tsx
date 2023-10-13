@@ -14,15 +14,17 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const ThemeProviderContext: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<string>("light");
+const ThemeContextConstructor = ({ children }: ThemeProviderProps) => {
+  const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "light");
 
+  
   useEffect(() => {
     document.body.className = theme + "-theme";
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((theme) => (theme === "light" ? "dark" : "light"));
   };
 
   return (
@@ -32,4 +34,4 @@ const ThemeProviderContext: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 };
 
-export default ThemeProviderContext;
+export default ThemeContextConstructor;
