@@ -1,0 +1,98 @@
+/* CSS RESETS */
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+/* CSS RESETS */
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+section{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+header i{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 30px;
+}
+
+a{
+  all: unset;
+  cursor: pointer;
+}
+
+a:hover{
+  color: gray;
+  
+}
+
+
+.light-theme {
+  background-color: white;
+  color: rgb(34, 34, 34);
+}
+
+.dark-theme {
+  background-color: rgb(34, 34, 34);
+  color: white;
+  
+}
+.gallery-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+.inner-card{
+  /* border: 1px gray solid; */
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+
+.inner-card > p:not(:last-child) {
+  padding-bottom: 10px;
+}
+
+span{
+  padding-bottom: 10px;
+}
